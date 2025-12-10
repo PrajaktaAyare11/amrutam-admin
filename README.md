@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🌿 Amrutam Admin Dashboard — Web + Affiliate Management System
 
-## Getting Started
+A complete admin dashboard built using Next.js, Tailwind CSS, and shadcn/ui.
+Manage affiliates, commissions, payments, doctors, coupons, FAQs, and customization settings — all in one clean, responsive admin interface.
 
-First, run the development server:
+🌐 Live Demo
 
-```bash
+🚀 Deployed on Vercel
+👉 View Live Site
+
+https://amrutam-admin-beta.vercel.app/login
+
+
+✨ Features
+
+🧭 Admin Dashboard with real-time affiliate tracking
+
+🩺 Top Doctors & Products ranking
+
+💸 Commission System — default & special
+
+🎟️ Coupons Management
+
+🧾 Sales Overview
+
+💳 Payment System
+
+Pending payments
+
+Payment history
+
+Status tracking
+
+🔧 Customization Module
+
+Web
+
+App
+
+❓ FAQ Management System
+
+Add FAQ
+
+Replace FAQ popup
+
+Homepage FAQ limit validation
+
+🌙 Theme Toggle (Light / Dark mode)
+
+👤 Profile Edit Modal
+
+Random avatar generator
+
+Update name, photo
+
+📱 Fully Responsive (Mobile-first)
+
+🎨 Beautiful UI using shadcn/ui
+
+🧠 Tech Stack
+Category	Technology
+Frontend	Next.js 14, React, Tailwind CSS
+UI Library	shadcn/ui
+Icons	Lucide React
+State & Auth	LocalStorage (Demo Login)
+Data	Static TS Data (lib/data.ts)
+Hosting	Vercel
+🔑 Demo Login
+Email: admin@amrutam.com  
+Password: admin123
+
+⚙️ Setup Instructions
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/amrutam-admin.git
+cd amrutam-admin
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run Development Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4️⃣ Build for Production
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🚀 Deployment Instructions (Vercel)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Push your code to GitHub
 
-## Learn More
+Go to Vercel → New Project
 
-To learn more about Next.js, take a look at the following resources:
+❗ Select the SAME GitHub repo
+(Do NOT import project files manually — that creates a duplicate repo.)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Click Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Every future git push will auto-deploy 🚀
 
-## Deploy on Vercel
+📂 Project Structure
+app/
+ ├── dashboard/
+ ├── login/
+ ├── not-found.tsx
+components/
+ ├── Header.tsx
+ ├── Sidebar.tsx
+ ├── ProfileDropdown.tsx
+lib/
+ ├── data.ts
+public/
+ ├── icons/
+ ├── product images
+ ├── profile.png
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+👩‍💻 Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Prajakta Ayare
+Frontend Developer — passionate about clean UI, dashboards & admin systems.
+
+⭐ Like This Project?
+
+Give it a star on GitHub! 🌟
