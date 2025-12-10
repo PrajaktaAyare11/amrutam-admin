@@ -9,7 +9,8 @@ import { useRouter } from "next/navigation";
 export default function AffiliateDashboardPage() {
   const [activeTab, setActiveTab] = useState("Month So Far");
   const router = useRouter();
-  const currentStats = dashboardData[activeTab];
+  const currentStats = dashboardData[activeTab as keyof typeof dashboardData];
+
 
   return (
     <div className="space-y-6">
@@ -147,7 +148,7 @@ export default function AffiliateDashboardPage() {
                   <span className="text-sm font-medium">{i + 1}.</span>
 
                   <div
-                    className={`w-10 h-10 flex items-center justify-center rounded-full ${product.color}`}
+                    className={`w-10 h-10 flex items-center justify-center rounded-full`}
                   >
                     
                     <Image
