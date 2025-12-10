@@ -26,26 +26,57 @@ export default function ProfileDropdown() {
   const router = useRouter();
 
   // ---------- base user state ----------
-  const [user, setUser] = useState<UserData | null>(null);
+  const [user, setUser] = useState<UserData | null>({
+    name: "Admin",
+    email: "admin@amrutam.com",
+    role: "Admin",
+    avatar: "https://i.pravatar.cc/150?img=8",
+  });
+
 
   // ---------- simple profile/settings UI state ----------
   const [openProfile, setOpenProfile] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
 
   const [tempName, setTempName] = useState("");
-  const [tempAvatar, setTempAvatar] = useState("");
+  const [tempAvatar, setTempAvatar] = useState(
+    "https://i.pravatar.cc/150?img=8"
+  );
+
 
   useEffect(() => {
-    const userData = localStorage.getItem("user");
-    if (userData) {
-      const parsed: UserData = JSON.parse(userData);
-      setUser(parsed);
-      setTempName(parsed.name);
-      setTempAvatar(
-        parsed.avatar || `https://i.pravatar.cc/150?u=${parsed.email}`
-      );
-    }
-  }, []);
+  const userData = localStorage.getItem("user");
+
+  if (userData) {
+    const parsed = JSON.parse(userData);
+
+    const safeUser = {
+      name: parsed.name || "Admin",
+      email: parsed.email || "admin@amrutam.com",
+      role: parsed.role || "Admin",
+      avatar: parsed.avatar?.trim()
+        ? parsed.avatar
+        : "https://i.pravatar.cc/150?img=8",
+    };
+
+    setUser(safeUser);
+    setTempAvatar(safeUser.avatar); 
+  } else {
+    const defaultUser = {
+      name: "Admin",
+      email: "admin@amrutam.com",
+      role: "Admin",
+      avatar: "https://i.pravatar.cc/150?img=8",
+    };
+
+    localStorage.setItem("user", JSON.stringify(defaultUser));
+    setUser(defaultUser);
+    setTempAvatar(defaultUser.avatar);
+  }
+}, []);
+
+
+
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -129,13 +160,15 @@ export default function ProfileDropdown() {
               {/* Avatar */}
               <Avatar className="h-8 w-8 rounded-full">
                 <AvatarImage
-                  src={`https://i.pravatar.cc/150?img=32` ||user.avatar }
-                  alt={user.name}
+                  src={user?.avatar || "https://i.pravatar.cc/150?img=8"}
+                  alt={user?.name || "User"}
                 />
+
                 <AvatarFallback className="bg-green-100 text-green-700 font-semibold text-xs">
                   {getInitials(user.name)}
                 </AvatarFallback>
               </Avatar>
+
 
               {/* Settings Icon - Hidden on mobile */}
               <Image
@@ -159,7 +192,12 @@ export default function ProfileDropdown() {
             <DropdownMenuSeparator />
 
             <DropdownMenuItem
-              onClick={() => setOpenProfile(true)}
+             onClick={() => {
+              setTempAvatar(user.avatar || "https://i.pravatar.cc/150?img=8"); 
+              setTempName(user.name);
+              setOpenProfile(true);
+            }}
+
               className="cursor-pointer"
             >
               <User className="mr-2 h-4 w-4" />
