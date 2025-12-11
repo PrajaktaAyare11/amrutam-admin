@@ -46,51 +46,66 @@ export default function AffiliateDoctorsPage() {
       <div className="bg-white rounded-xl border p-4">
 
         {/* ✅ HEADER */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="
+  flex flex-col gap-4 
+  md:flex-row md:items-center md:justify-between 
+  mb-4
+">
 
-          {/* LEFT */}
-          <div className="flex items-center gap-4">
-            <h3 className="font-semibold">Affiliate Doctors</h3>
+  {/* LEFT SIDE */}
+  <div className="
+    flex flex-wrap items-center 
+    gap-3
+  ">
 
-            <div className="flex items-center bg-gray-100 rounded-md p-2 w-[240px]">
-              <Image
-                src="/search.png"
-                alt="Search"
-                width={16}
-                height={16}
-                className="mr-2"
-              />
-              <input
-                type="text"
-                placeholder="Search here"
-                className="flex-1 bg-transparent outline-none text-sm px-2"
-              />
-            </div>
+    <h3 className="font-semibold whitespace-nowrap">Affiliate Doctors</h3>
 
-            <Button size="icon" variant="outline" className="bg-gray-100">
-              <Plus color="green" size={16} />
-            </Button>
+    {/* Search Bar */}
+    <div className="
+      flex items-center bg-gray-100 rounded-md p-2 
+      w-full sm:w-[240px]
+    ">
+      <Image
+        src="/search.png"
+        alt="Search"
+        width={16}
+        height={16}
+        className="mr-2"
+      />
+      <input
+        type="text"
+        placeholder="Search here"
+        className="flex-1 bg-transparent outline-none text-sm px-2"
+      />
+    </div>
 
-            <Button size="icon" variant="outline" className="bg-gray-100">
-              <RefreshCw color="green" size={16} />
-            </Button>
+    {/* Buttons */}
+    <Button size="icon" variant="outline" className="bg-gray-100">
+      <Plus color="green" size={16} />
+    </Button>
 
-            {/* ✅ SORT */}
-            <Button
-              size="icon"
-              variant="outline"
-              className="bg-gray-100"
-              onClick={() => setSortAsc(!sortAsc)}
-            >
-              <ArrowUpDown color="green" size={16} />
-            </Button>
-          </div>
+    <Button size="icon" variant="outline" className="bg-gray-100">
+      <RefreshCw color="green" size={16} />
+    </Button>
 
-          {/* RIGHT */}
-          <Button size="icon" variant="outline" className="bg-gray-100">
-            <Download color="green" size={16} />
-          </Button>
-        </div>
+    <Button
+      size="icon"
+      variant="outline"
+      className="bg-gray-100"
+      onClick={() => setSortAsc(!sortAsc)}
+    >
+      <ArrowUpDown color="green" size={16} />
+    </Button>
+  </div>
+
+  {/* RIGHT SIDE */}
+  <div className="flex md:justify-end">
+    <Button size="icon" variant="outline" className="bg-gray-100">
+      <Download color="green" size={16} />
+    </Button>
+  </div>
+</div>
+
 
         {/* ✅ TABLE */}
         <div className="overflow-auto">

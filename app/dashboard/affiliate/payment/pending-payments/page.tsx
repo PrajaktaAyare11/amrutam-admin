@@ -49,41 +49,52 @@ export default function PendingPaymentsPage() {
       <div className="bg-white rounded-xl border p-4">
 
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-4">
+        {/* HEADER */}
+<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
 
-          {/* LEFT */}
-          <div className="flex items-center gap-4">
-            <h3 className="font-semibold">Pending Payment Request</h3>
+  {/* LEFT SIDE → Wraps properly on mobile */}
+  <div className="flex flex-col sm:flex-row sm:items-center gap-3 flex-wrap">
 
-            <div className="flex items-center bg-gray-100 rounded-md p-2 w-[240px]">
-              <Image
-                src="/search.png"
-                alt="Search"
-                width={16}
-                height={16}
-                className="mr-2"
-              />
-              <input
-                type="text"
-                placeholder="Search here"
-                className="flex-1 bg-transparent outline-none text-sm px-2"
-              />
-            </div>
+    <h3 className="font-semibold whitespace-nowrap">
+      Pending Payment Request
+    </h3>
 
-            <Button size="icon" variant="outline" className="bg-gray-100">
-              <Plus color="green" size={16} />
-            </Button>
+    {/* Search Box */}
+    <div className="flex items-center bg-gray-100 rounded-md px-2 py-1 w-full sm:w-[240px]">
+      <Image
+        src="/search.png"
+        alt="Search"
+        width={16}
+        height={16}
+        className="mr-2"
+      />
+      <input
+        type="text"
+        placeholder="Search here"
+        className="flex-1 bg-transparent outline-none text-sm px-1"
+      />
+    </div>
 
-            <Button size="icon" variant="outline" className="bg-gray-100">
-              <RefreshCw color="green" size={16} />
-            </Button>
-          </div>
+    {/* Buttons */}
+    <div className="flex items-center gap-2">
+      <Button size="icon" variant="outline" className="bg-gray-100">
+        <Plus color="green" size={16} />
+      </Button>
 
-          {/* RIGHT */}
-          <Button size="icon" variant="outline" className="bg-gray-100">
-            <Download color="green" size={16} />
-          </Button>
-        </div>
+      <Button size="icon" variant="outline" className="bg-gray-100">
+        <RefreshCw color="green" size={16} />
+      </Button>
+    </div>
+  </div>
+
+  {/* RIGHT SIDE — moves below on mobile */}
+  <div className="flex justify-start md:justify-end">
+    <Button size="icon" variant="outline" className="bg-gray-100">
+      <Download color="green" size={16} />
+    </Button>
+  </div>
+</div>
+
 
         {/* TABLE */}
         <div className="overflow-auto">

@@ -58,26 +58,43 @@ export default function CommissionPage() {
     <div className="p-6 bg-[#F7F8FA] min-h-screen">
       
       {/* ✅ Breadcrumb + Action */}
-      <div className="flex items-center justify-between mb-6">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm">
-                <span className="text-gray-600 hover:text-gray-900 cursor-pointer font-semibold" onClick={() => router.push("/dashboard/affiliate")}>  
-                  Affiliate
-                </span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
-                <span className="text-green-800 hover:text-gray-900 font-semibold" onClick={() => router.push("/dashboard/affiliate/commission")}>
-                  Commission
-                </span>
-              </div>
+      <div
+        className="
+          flex flex-col gap-3 mb-6
+          md:flex-row md:items-center md:justify-between
+        "
+      >
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm">
+          <span
+            className="text-gray-600 hover:text-gray-900 cursor-pointer font-semibold"
+            onClick={() => router.push("/dashboard/affiliate")}
+          >
+            Affiliate
+          </span>
+          <ChevronRight className="w-4 h-4 text-gray-400" />
+          <span
+            className="text-green-800 hover:text-gray-900 font-semibold"
+            onClick={() => router.push("/dashboard/affiliate/commission")}
+          >
+            Commission
+          </span>
+        </div>
 
-        <Button 
-          className="bg-[#3A643B] hover:bg-[#173E22] w-2xs"
+        {/* Button - full width on mobile */}
+        <Button
+          className="
+            bg-[#3A643B] hover:bg-[#173E22] 
+            w-full md:w-auto    /* full width on small screens */
+            py-3 md:py-2        /* bigger tap area on mobile */
+            text-sm font-medium
+          "
           onClick={() => router.push("/dashboard/affiliate/commission/add")}
         >
           Add Special Commission
         </Button>
-
       </div>
+
 
       {/* ✅ Default Product Commission */}
       <div className="flex items-center justify-between mb-4">
@@ -129,7 +146,7 @@ export default function CommissionPage() {
 
 
           <div className="flex justify-end">
-            <Button className="bg-[#3A643B] text-white w-40 h-8 text-sm sm:text-base sm:px-6 rounded-md">Update</Button>
+            <Button className="bg-[#3A643B] text-white w-30 h-8 text-sm sm:text-base sm:px-6 rounded-md">Update</Button>
           </div>
         </CardContent>
       </Card>
@@ -185,7 +202,7 @@ export default function CommissionPage() {
 
           <div className="flex justify-end">
               <button
-                className="bg-[#3A643B] text-white w-40 h-8 text-sm sm:text-base sm:px-6 rounded-md"
+                className="bg-[#3A643B] text-white w-30 h-8 text-sm sm:text-base sm:px-6 rounded-md"
                 aria-label="Update Commission"
               >
                 Update
@@ -198,44 +215,54 @@ export default function CommissionPage() {
       <Card>
         <CardContent className="p-4 space-y-2">
 
-          <div className="flex items-center justify-between gap-4 w-full">
+          <div className="
+  flex flex-wrap gap-3 justify-between items-center
+  md:flex-nowrap md:gap-4
+">
+  {/* LEFT GROUP */}
+  <div className="flex flex-wrap gap-3 items-center">
+    <h3 className="font-semibold">Special Commissions</h3>
 
-            <div className="flex items-center gap-4">
-              <h3 className="font-semibold">Special Commission</h3>
+    {/* Search Bar */}
+    <div className="
+      flex items-center bg-gray-100 rounded-md p-2
+      w-full sm:w-[240px]
+    ">
+      <Image
+        src="/search.png"
+        alt="Search"
+        width={16}
+        height={16}
+        className="mr-2"
+      />
+      <input
+        type="text"
+        placeholder="Search here"
+        aria-label="Search special commission"
+        className="
+          flex-1 bg-transparent outline-none text-sm px-2 
+          poppins-medium placeholder-[#28643B4D] text-[#28643B4D] 
+          focus:text-[#333548BF]
+        "
+      />
+    </div>
 
-              <div className="flex items-center bg-gray-100 rounded-md p-2 w-[200px] sm:w-[240px]">
-                <Image
-                  src="/search.png"
-                  alt="Search"
-                  width={16}
-                  height={16}
-                  className="mr-2"
-                />
-                <input
-                  type="text"
-                  placeholder="Search here"
-                  aria-label="Search special commission"
-                  className="flex-1 bg-transparent outline-none text-sm px-2 poppins-medium placeholder-[#28643B4D] text-[#28643B4D] focus:text-[#333548BF]"
-                />
-              </div>
+    {/* Buttons */}
+    <Button className="bg-gray-100" size="icon" variant="outline">
+      <Plus color="green" size={16} />
+    </Button>
 
-              <Button className="bg-gray-100" size="icon" variant="outline">
-                <Plus color="green" size={16} />
-              </Button>
+    <Button className="bg-gray-100" size="icon" variant="outline">
+      <RefreshCw color="green" size={16} />
+    </Button>
+  </div>
 
-              <Button className="bg-gray-100" size="icon" variant="outline">
-                <RefreshCw color="green" size={16} />
-              </Button>
-            </div>
+  {/* RIGHT */}
+  <Button className="bg-gray-100" size="icon" variant="outline">
+    <Download color="green" size={16} />
+  </Button>
+</div>
 
-            {/* ✅ RIGHT: ONLY DOWNLOAD */}
-            <div>
-              <Button className="bg-gray-100" size="icon" variant="outline">
-                <Download color="green" size={16} />
-              </Button>
-            </div>
-
-          </div>
 
 
 

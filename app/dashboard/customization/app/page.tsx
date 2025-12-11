@@ -67,24 +67,33 @@ export default function FAQPage() {
             </div>
 
       {/* ------------------ MAIN TABS ------------------ */}
-      <div className="bg-white  rounded-xl px-6 py-3 flex gap-12  font-semibold">
-        {mainTabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => {
-              setActiveMainTab(tab);
-              setShowAddForm(false);
-            }}
-            className={`pb-1 ${
-              activeMainTab === tab
-                ? "text-green-700 border-b-2 border-green-700"
-                : "text-gray-400"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+      <div
+  className="
+    bg-white rounded-xl px-6 py-3 
+    flex gap-6 
+    font-semibold 
+    overflow-x-auto no-scrollbar
+    whitespace-nowrap
+  "
+>
+  {mainTabs.map((tab) => (
+    <button
+      key={tab}
+      onClick={() => {
+        setActiveMainTab(tab);
+        setShowAddForm(false);
+      }}
+      className={`pb-1 flex-shrink-0 ${
+        activeMainTab === tab
+          ? "text-green-700 border-b-2 border-green-700"
+          : "text-gray-400"
+      }`}
+    >
+      {tab}
+    </button>
+  ))}
+</div>
+
 
       {activeMainTab !== "FAQ" && (
         <div className="bg-white p-20 rounded-xl text-gray-400 text-center">
@@ -211,31 +220,67 @@ export default function FAQPage() {
 
           {/* ✅ FAQ LIST (UNCHANGED) */}
           {!showAddForm && (
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="flex items-center justify-between px-2 py-4">
-                <div className="flex items-center gap-5">
-                  <h3 className="font-semibold">FAQ List</h3>
-                  <div className="flex items-center bg-gray-100 rounded-lg px-4 py-2 w-[240px]">
-                    <Image src="/search.png" alt="Search" width={16} height={16} className="mr-2 opacity-60" />
-                    <input placeholder="Search here" className="bg-transparent outline-none text-sm w-full" />
-                  </div>
-                  <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
-                    <RefreshCw size={16} className="text-green-700" />
-                  </button>
-                </div>
+  <div className="bg-white p-6 rounded-xl shadow-sm">
+  <div
+    className="
+      flex flex-col sm:flex-row 
+      sm:items-center sm:justify-between 
+      gap-4 sm:gap-0
+      px-2 py-4
+    "
+  >
+    {/* LEFT SECTION */}
+    <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+      <h3 className="font-semibold whitespace-nowrap">FAQ List</h3>
 
-                <div className="flex items-center gap-4">
-                  <Button className="bg-[#3A643B]" onClick={() => setShowAddForm(true)}>
-                    Add New FAQ
-                  </Button>
-                  <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
-                    <ArrowUpDown size={16} className="text-green-700" />
-                  </button>
-                  <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
-                    <Download size={16} className="text-green-700" />
-                  </button>
-                </div>
-              </div>
+      {/* Search */}
+      <div className="flex items-center bg-gray-100 rounded-lg px-4 py-2 w-full sm:w-[240px]">
+        <Image
+          src="/search.png"
+          alt="Search"
+          width={16}
+          height={16}
+          className="mr-2 opacity-60"
+        />
+        <input
+          placeholder="Search here"
+          className="bg-transparent outline-none text-sm w-full"
+        />
+      </div>
+
+      {/* Refresh */}
+      <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
+        <RefreshCw size={16} className="text-green-700" />
+      </button>
+    </div>
+
+    {/* RIGHT SECTION (NOW WRAPS ON MOBILE) */}
+    <div
+      className="
+        flex flex-wrap 
+        items-center 
+        gap-3
+        sm:gap-4
+        justify-start sm:justify-end
+      "
+    >
+      <Button
+        className="bg-[#3A643B] w-full sm:w-auto"
+        onClick={() => setShowAddForm(true)}
+      >
+        Add New FAQ
+      </Button>
+
+      <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
+        <ArrowUpDown size={16} className="text-green-700" />
+      </button>
+
+      <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100">
+        <Download size={16} className="text-green-700" />
+      </button>
+    </div>
+  </div>
+
 
             <div className="flex justify-between md:justify-center md:gap-40 border-b mb-4 font-medium overflow-x-auto no-scrollbar px-2">
               {faqCategories.map((cat) => (
